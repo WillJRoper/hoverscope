@@ -1,14 +1,14 @@
 // Background service worker for Hoverscope
 // Loads telescope database and caches it
 
-const DATABASE_URL = 'https://raw.githubusercontent.com/YOUR_USERNAME/hoverscope-data/main/telescopes.json';
+const DATABASE_URL = 'https://raw.githubusercontent.com/nataliehogg/hoverscope/main/telescopes.json';
 
 // Load bundled data on installation - this is the PRIMARY data source
 chrome.runtime.onInstalled.addListener(async () => {
   console.log('Hoverscope installed, loading telescope database...');
   await loadBundledData();
-  // Optionally try to fetch updates from GitHub (won't work without valid URL)
-  // await tryUpdateFromGitHub();
+  // Try to fetch updates from GitHub
+  await tryUpdateFromGitHub();
 });
 
 // Load the bundled telescopes.json file
