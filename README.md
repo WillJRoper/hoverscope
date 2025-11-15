@@ -34,40 +34,38 @@ For each telescope/satellite, Hoverscope shows:
 
 ### Manual Installation (For Development)
 
-Since Chrome and Firefox require different manifest configurations, you'll need to build the appropriate version first.
+Since Chrome and Firefox require different manifest configurations, you'll need to copy the appropriate manifest file first.
 
 #### Prerequisites
 
-1. Download this repository as a ZIP file and extract it, or clone it:
-   ```bash
-   git clone https://github.com/nataliehogg/hoverscope.git
-   cd hoverscope
-   ```
-
-#### Building the Extension
-
-The extension uses different manifests for Chrome and Firefox. To get both, simply use the automated build script:
-
+Clone or download this repository:
 ```bash
-./build.sh
+git clone https://github.com/nataliehogg/hoverscope.git
+cd hoverscope
 ```
-
-This creates both `hoverscope-chrome-v1.4.0.zip` and `hoverscope-firefox-v1.4.0.zip`.
 
 #### Installing in Chrome
 
-1. Open Chrome and go to `chrome://extensions/`
-2. Enable "Developer mode" (toggle in top-right)
-3. Click "Load unpacked"
-4. Select the `hoverscope` folder
-5. Done! Visit arXiv and hover over telescope names
+1. Copy the Chrome manifest:
+   ```bash
+   cp manifest.chrome.json manifest.json
+   ```
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" (toggle in top-right)
+4. Click "Load unpacked"
+5. Select the `hoverscope` folder
+6. Done! Visit arXiv and hover over telescope names
 
 #### Installing in Firefox
 
-1. Open Firefox and go to `about:debugging#/runtime/this-firefox`
-2. Click "Load Temporary Add-on"
-3. Navigate to the `hoverscope` folder and select `manifest.json`
-4. Done! (Note: temporary add-ons are removed when Firefox restarts)
+1. Copy the Firefox manifest:
+   ```bash
+   cp manifest.firefox.json manifest.json
+   ```
+2. Open Firefox and go to `about:debugging#/runtime/this-firefox`
+3. Click "Load Temporary Add-on"
+4. Navigate to the `hoverscope` folder and select `manifest.json`
+5. Done! (Note: temporary add-ons are removed when Firefox restarts)
 
 For permanent Firefox installation, the extension needs to be signed by Mozilla or you need to use Firefox Developer Edition with `xpinstall.signatures.required` set to `false`.
 
