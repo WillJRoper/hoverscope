@@ -12,7 +12,7 @@ Hoverscope is a browser extension that detects mentions of telescopes, satellite
 - 🔄 **Auto-updating**: Database updates automatically from GitHub
 - 🌓 **Dark Mode**: Adapts to your system preferences
 - 📚 **Comprehensive**: Covers major space/ground telescopes and instruments
-- 🎯 **arXiv Optimized**: Works seamlessly on paper titles, abstracts, and content
+- 🎯 **arXiv Optimised**: Works seamlessly on paper titles, abstracts, and content
 
 ## Information Displayed
 
@@ -46,57 +46,40 @@ Since Chrome and Firefox require different manifest configurations, you'll need 
 
 #### Building the Extension
 
-The extension uses different manifests for Chrome and Firefox. To generate the correct `manifest.json`:
+The extension uses different manifests for Chrome and Firefox. To get both, simply use the automated build script:
 
-**For Chrome/Edge/Brave:**
-```bash
-cp manifest.chrome.json manifest.json
-```
-
-**For Firefox:**
-```bash
-cp manifest.firefox.json manifest.json
-```
-
-Or use the automated build script:
 ```bash
 ./build.sh
 ```
 
 This creates both `hoverscope-chrome-v1.4.0.zip` and `hoverscope-firefox-v1.4.0.zip`.
 
-#### Installing in Chrome/Edge/Brave
+#### Installing in Chrome
 
-1. Make sure you've copied the Chrome manifest: `cp manifest.chrome.json manifest.json`
-2. Open Chrome and go to `chrome://extensions/`
-3. Enable "Developer mode" (toggle in top-right)
-4. Click "Load unpacked"
-5. Select the `hoverscope` folder
-6. Done! Visit arXiv and hover over telescope names
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable "Developer mode" (toggle in top-right)
+3. Click "Load unpacked"
+4. Select the `hoverscope` folder
+5. Done! Visit arXiv and hover over telescope names
 
 #### Installing in Firefox
 
-1. Make sure you've copied the Firefox manifest: `cp manifest.firefox.json manifest.json`
-2. Open Firefox and go to `about:debugging#/runtime/this-firefox`
-3. Click "Load Temporary Add-on"
-4. Navigate to the `hoverscope` folder and select `manifest.json`
-5. Done! (Note: temporary add-ons are removed when Firefox restarts)
+1. Open Firefox and go to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Navigate to the `hoverscope` folder and select `manifest.json`
+4. Done! (Note: temporary add-ons are removed when Firefox restarts)
 
 For permanent Firefox installation, the extension needs to be signed by Mozilla or you need to use Firefox Developer Edition with `xpinstall.signatures.required` set to `false`.
 
 ## Usage
 
-Just browse arXiv normally! Hoverscope automatically detects telescope and satellite names in:
-- Paper titles
-- Abstracts
-- Author lists
-- Full paper content
+Just browse arXiv normally! Hoverscope automatically detects telescope and satellite names in paper titles and abstracts.
 
-When you hover over a recognized name (like "JWST", "Hubble", "ALMA"), a tooltip appears with detailed information.
+When you hover over a recognised name (like "JWST", "Hubble", "ALMA"), a tooltip appears with detailed information.
 
 ## Current Database
 
-Hoverscope currently recognizes **30+ telescopes and instruments**, including:
+Hoverscope currently recognises **30+ telescopes and instruments**, including:
 
 **Space Telescopes:**
 - James Webb Space Telescope (JWST)
