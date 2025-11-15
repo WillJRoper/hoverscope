@@ -102,19 +102,14 @@ Hoverscope currently recognises **30+ telescopes and instruments**, including:
 - JWST instruments (MIRI, NIRSpec, NIRCam)
 - And more...
 
-## Updating the Database
-
 The extension automatically checks for database updates daily. The database is stored as a JSON file that can be easily updated.
 
-### For Users
+## Contributing
 
-The database updates automatically! No action needed.
+Want to add more telescopes or improve the extension? Contributions welcome!
 
-### For Maintainers
-
-To add new telescopes or update information:
-
-1. Edit `telescopes.json` following this format:
+1. Fork the repository
+2. Add telescope data to `telescopes.json` following this format:
 
 ```json
 {
@@ -131,23 +126,8 @@ To add new telescopes or update information:
   }
 }
 ```
-
-2. Commit and push to your GitHub repository
-3. Update the `DATABASE_URL` in `background.js` to point to your repository:
-   ```javascript
-   const DATABASE_URL = 'https://raw.githubusercontent.com/YOUR_USERNAME/hoverscope-data/main/telescopes.json';
-   ```
-
-Users' extensions will automatically fetch the updated database within 24 hours.
-
-## Contributing
-
-Want to add more telescopes or improve the extension? Contributions welcome!
-
-1. Fork the repository
-2. Add telescope data to `telescopes.json`
-3. Test locally
-4. Submit a pull request
+4. Test locally
+5. Submit a pull request
 
 ## Technical Details
 
@@ -164,6 +144,8 @@ Hoverscope:
 - ✅ Does not track browsing history
 - ✅ Minimal permissions (storage only)
 - ✅ All data processing happens locally in your browser
+
+A full privacy statement can be found at [PRIVACY.md](https://github.com/nataliehogg/hoverscope/blob/main/PRIVACY.md).
 
 ## License
 
