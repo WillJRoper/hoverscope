@@ -23,7 +23,8 @@
       "matches": [
         "https://arxiv.org/*",
         "https://www.arxiv.org/*",
-        "https://astrochristian.github.io/*"
+        "https://astrochristian.github.io/*",
+        "https://astrochristian.github.io/astro_ph_co/*"
       ],
       "js": ["content.js"],
       "css": ["styles.css"]
@@ -37,7 +38,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["telescopes.json"],
+      "resources": ["telescopes.json", "names.json"],
       "matches": ["<all_urls>"]
     }
   ]

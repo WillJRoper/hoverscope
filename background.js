@@ -5,8 +5,9 @@ const DATABASE_URL = 'https://raw.githubusercontent.com/nataliehogg/hoverscope/m
 
 // Load bundled data on installation - this is the PRIMARY data source
 chrome.runtime.onInstalled.addListener(async () => {
-  console.log('Hoverscope installed, loading telescope database...');
+  console.log('Hoverscope installed, loading databases...');
   await loadBundledData();
+  await loadNamesData();
   // Try to fetch updates from GitHub
   await tryUpdateFromGitHub();
 });
@@ -16,7 +17,7 @@ async function loadBundledData() {
   try {
     const response = await fetch(chrome.runtime.getURL('telescopes.json'));
     const data = await response.json();
-    await chrome.storage.local.set({ 
+    await chrome.storage.local.set({
       telescopeData: data,
       lastUpdate: Date.now(),
       dataSource: 'bundled'
@@ -24,6 +25,20 @@ async function loadBundledData() {
     console.log('Hoverscope: Loaded', Object.keys(data).length, 'telescopes from bundled database');
   } catch (error) {
     console.error('Hoverscope: Error loading bundled data:', error);
+  }
+}
+
+// Load the bundled names.json file
+async function loadNamesData() {
+  try {
+    const response = await fetch(chrome.runtime.getURL('names.json'));
+    const data = await response.json();
+    await chrome.storage.local.set({
+      namesData: data
+    });
+    console.log('Hoverscope: Loaded', Object.keys(data).length, 'names from bundled database');
+  } catch (error) {
+    console.error('Hoverscope: Error loading names data:', error);
   }
 }
 
@@ -62,7 +77,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
     return true; // Keep channel open for async response
   }
-  
+
+  if (request.action === 'getNamesData') {
+    chrome.storage.local.get('namesData', (result) => {
+      sendResponse(result.namesData || {});
+    });
+    return true; // Keep channel open for async response
+  }
+
   if (request.action === 'forceUpdate') {
     tryUpdateFromGitHub().then(() => {
       sendResponse({ success: true });
