@@ -155,8 +155,12 @@ function processElement(element, elementIndex) {
       const names = [telescope.name, ...(telescope.aliases || [])];
 
       names.forEach(name => {
-        // Create case-insensitive regex with word boundaries
-        const regex = new RegExp(`\\b${escapeRegex(name)}\\b`, 'gi');
+        // For certain telescopes, use case-sensitive matching to avoid false positives
+        // ET: avoid "et al."
+        // FIRST/FAST: avoid common words "first" and "fast"
+        const caseSensitiveNames = ['ET', 'FIRST', 'FAST'];
+        const flags = caseSensitiveNames.includes(name) ? 'g' : 'gi';
+        const regex = new RegExp(`\\b${escapeRegex(name)}\\b`, flags);
         let match;
 
         // Reset regex
