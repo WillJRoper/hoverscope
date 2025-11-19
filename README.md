@@ -113,7 +113,7 @@ The extension automatically checks for database updates daily. The database is s
 Want to add more telescopes or improve the extension? Contributions welcome!
 
 1. Fork the repository
-2. Add telescope data to `telescopes.json` following this format:
+2. Add telescope data to `database.json` following this format:
 
 ```json
 {
