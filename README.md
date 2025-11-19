@@ -27,10 +27,12 @@ For each telescope/satellite, Hoverscope shows:
 
 ## Installation
 
+Note that every time the extension is updated, it must go through the review process on the webstores. If you want to make sure you always have the most up-to-date version, install directly from this repository.
+
 ### From Browser Stores
 
 - [**Chrome Web Store**](https://chromewebstore.google.com/detail/hoverscope/lhhdkflffdlgbmcmlmhklkghbgbegghn?utm_source=item-share-cb&pli=1)
-- **Firefox Add-ons**: [Link coming soon]
+- [**Firefox Add-ons**](https://addons.mozilla.org/en-GB/firefox/addon/hoverscope/)
 
 ### Manual Installation (For Development)
 
