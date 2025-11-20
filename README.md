@@ -27,9 +27,7 @@ For each telescope/satellite, Hoverscope shows:
 
 ## Installation
 
-Note that every time the extension is updated, it must go through the review process on the webstores. If you want to make sure you always have the most up-to-date version, install directly from this repository.
-
-### From Browser Stores
+### From Browser Stores (Simplest)
 
 - [**Chrome Web Store**](https://chromewebstore.google.com/detail/hoverscope/lhhdkflffdlgbmcmlmhklkghbgbegghn?utm_source=item-share-cb&pli=1)
 - [**Firefox Add-ons**](https://addons.mozilla.org/en-GB/firefox/addon/hoverscope/)
@@ -70,6 +68,10 @@ cd hoverscope
 5. Done! (Note: temporary add-ons are removed when Firefox restarts)
 
 For permanent Firefox installation, the extension needs to be signed by Mozilla or you need to use Firefox Developer Edition with `xpinstall.signatures.required` set to `false`.
+
+## Updates
+
+When a new release of the code is published on Github, that release will also be made available on the webstores. This is not automatic, and there may be a short delay (~hours) between the release on Github and the update propagating to the webstores, as the updates have to be reviewed each time. This means that the most up-to-date stable version of `hoverscope` will always be the one available from the main branch of this repository. Note that you will have to reload the extension in your browser after pulling from the repository to ensure updates propagate to your live version.
 
 ## Usage
 
