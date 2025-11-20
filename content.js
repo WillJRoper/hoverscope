@@ -158,9 +158,28 @@ function processElement(element, elementIndex) {
         // For certain telescopes, use case-sensitive matching to avoid false positives
         // ET: avoid "et al."
         // FIRST/FAST: avoid common words "first" and "fast"
-        const caseSensitiveNames = ['ET', 'FIRST', 'FAST'];
+        // INTEGRAL: avoid lowercase "integral" (as in "integral part")
+        const caseSensitiveNames = ['ET', 'FIRST', 'FAST', 'INTEGRAL'];
         const flags = caseSensitiveNames.includes(name) ? 'g' : 'gi';
-        const regex = new RegExp(`\\b${escapeRegex(name)}\\b`, flags);
+
+        // Build regex pattern with special cases
+        let pattern;
+
+        // Hubble: avoid "Hubble tension"
+        if (name === 'Hubble' || name === 'Hubble Space Telescope' || name === 'HST') {
+          // Negative lookahead to exclude matches followed by "tension"
+          pattern = `\\b${escapeRegex(name)}\\b(?!\\s+tension)`;
+        }
+        // Planck: avoid hyphenated cases like "Fokker-Planck" or "Fokker--Planck"
+        else if (name === 'Planck' || name === 'Planck satellite') {
+          // Negative lookbehind to exclude matches preceded by one or two hyphens
+          pattern = `(?<!-{1,2})\\b${escapeRegex(name)}\\b`;
+        }
+        else {
+          pattern = `\\b${escapeRegex(name)}\\b`;
+        }
+
+        const regex = new RegExp(pattern, flags);
         let match;
 
         // Reset regex
