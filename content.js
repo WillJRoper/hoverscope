@@ -383,13 +383,15 @@ function handleMouseEnter(event) {
   const appendField = (field, value) => {
     const fieldDiv = document.createElement('div');
     fieldDiv.className = 'hoverscope-field';
-    
+
     const fieldLabel = document.createElement('strong');
     const labelText = field.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
     fieldLabel.textContent = `${labelText}: `;
-    
+
     fieldDiv.appendChild(fieldLabel);
-    fieldDiv.appendChild(document.createTextNode(value.trim()));
+    // Convert value to string and trim, handling arrays and objects
+    const valueStr = typeof value === 'string' ? value : String(value);
+    fieldDiv.appendChild(document.createTextNode(valueStr.trim()));
     tooltip.appendChild(fieldDiv);
     processedFields.add(field);
   };
