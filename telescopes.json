@@ -200,6 +200,28 @@
     "status": "Decommissioned (October 23, 2013)",
     "description": "Mapped cosmic microwave background with unprecedented precision, measuring universe's age and composition"
   },
+  "act": {
+    "name": "ACT",
+    "aliases": ["Atacama Cosmology Telescope"],
+    "type": "Ground-based Telescope",
+    "launch_date": "2007 (first observations)",
+    "wavelengths": "Millimeter/submillimeter (1-3 mm)",
+    "survey_area": "~50% of sky",
+    "location": "Atacama Desert, Chile (5190m altitude)",
+    "status": "Operational",
+    "description": "6-meter telescope measuring cosmic microwave background, dark energy, galaxy clusters, and gravitational lensing"
+  },
+  "spt": {
+    "name": "SPT",
+    "aliases": ["South Pole Telescope"],
+    "type": "Ground-based Telescope",
+    "launch_date": "2007 (first light)",
+    "wavelengths": "Millimeter/submillimeter (1-3 mm)",
+    "survey_area": "2500 sq deg",
+    "location": "Amundsen-Scott South Pole Station, Antarctica",
+    "status": "Operational",
+    "description": "10-meter telescope observing cosmic microwave background, detecting galaxy clusters via Sunyaev-Zel'dovich effect"
+  },
   "wmap": {
     "name": "WMAP",
     "aliases": ["Wilkinson Microwave Anisotropy Probe"],
