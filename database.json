@@ -401,7 +401,7 @@
     "subgrid_model": "FLAMINGO galaxy formation model",
     "volume": "Up to (2.8 Gpc)^3 (multiple runs at different resolutions)",
     "mass_resolution": "High-res: baryon ~1×10^8 M⊙ (DM ~5×10^8 M⊙); Mid-res: baryon ~1×10^9 M⊙ (DM ~5×10^9 M⊙)",
-    "cost": "~28M CPU hours across all runs",
+    "cost": "~28M CPU hours (excluding L2800N10080)",
     "description": "A suite of large-volume (up to 2.8 Gpc)^3 hydrodynamical simulations designed for next-generation large-scale structure surveys, including the effects of baryons and neutrinos."
   },
   "colibre": {
