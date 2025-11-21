@@ -162,7 +162,6 @@
     "subgrid_model": "Frontier AGN jet heating and feedback model",
     "volume": "≈(3 Gpc)^3 (spanning ~10 billion light-years across)",
     "mass_resolution": "DM ~1×10^9 M⊙; gas ~2×10^8 M⊙ (approximate for current runs)",
-    "num_zoom_regions": 1,
     "description": "A flagship cosmological hydrodynamical simulation run on the exascale Frontier supercomputer, covering ~10 billion light-years and including dark matter, gas, star formation and black hole physics for comparison with upcoming surveys."
   },
   "sphinx": {
@@ -188,7 +187,6 @@
     "subgrid_model": "MEGATRON galaxy formation and ISM model (PRISM-based)",
     "volume": "Zoom-in on the Lagrangian region of a Milky Way-mass halo within a larger cosmological box",
     "mass_resolution": "DM ~1×10^5 M⊙; gas ~1×10^4 M⊙ (in highest-resolution regions)",
-    "num_zoom_regions": 1,
     "end_redshift": "z~1–2 (for Milky Way progenitor runs; some applications to z~8 dwarf regime)",
     "description": "A suite of high-resolution radiation-hydrodynamic zoom simulations of a Milky Way-mass environment from the epoch of Population III star formation to cosmic noon, with detailed non-equilibrium chemistry and multifrequency radiative transfer."
   },
@@ -256,7 +254,6 @@
     "subgrid_model": "LYRA dwarf galaxy formation model",
     "volume": "Zoom-in on a ~2×10^9 M⊙ halo (selected from a larger volume or isolated setup)",
     "mass_resolution": "DM ≈2×10^1 M⊙; gas 4 M⊙ per cell (resolves individual supernova events)",
-    "num_zoom_regions": 1,
     "description": "An extreme-resolution dwarf galaxy zoom simulation resolving the ISM down to ~4 M⊙ gas elements and 10 K, forming individual stars and tracking their feedback to z=0."
   },
   "cosmic_dawn": {
@@ -295,7 +292,6 @@
     "subgrid_model": "NewHorizon physics model (based on Horizon-AGN)",
     "volume": "(16 Mpc)^3 zoom region",
     "mass_resolution": "DM ~1e6 M⊙; gas cell size down to ~34 pc",
-    "num_zoom_regions": 1,
     "description": "A high-resolution zoom-in simulation embedded in a larger cosmological box, focusing on detailed ISM structure and galaxy formation."
   },
   "astrid": {
