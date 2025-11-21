@@ -289,7 +289,6 @@
     "subgrid_model": "IllustrisTNG galaxy formation model",
     "volume": "TNG50: (50 Mpc)^3; TNG100: (100 Mpc)^3; TNG300: (300 Mpc)^3",
     "mass_resolution": "TNG50-1: Gas ~8.5e4 M⊙, DM ~4.5e5 M⊙; TNG100-1: Gas 1.4e6 M⊙, DM 7.5e6 M⊙; TNG300-1: Gas ~1.1e7 M⊙, DM ~5.9e7 M⊙",
-    "end_redshift": "z=0",
     "description": "A suite of large-scale magneto-hydrodynamical simulations of galaxy formation at three volumes (50–300 Mpc on a side)."
   },
   "illustris_original": {
@@ -306,7 +305,6 @@
     "subgrid_model": "Illustris galaxy formation model",
     "volume": "(106.5 Mpc)^3",
     "mass_resolution": "Gas 1.26e6 M⊙, DM 6.26e6 M⊙",
-    "end_redshift": "z=0",
     "description": "Predecessor to IllustrisTNG, a landmark hydrodynamical simulation of galaxy formation in a ~100 Mpc box."
   },
   "eagle": {
@@ -322,7 +320,6 @@
     "subgrid_model": "EAGLE galaxy formation model",
     "volume": "Boxes from (25 Mpc)^3 up to (100 Mpc)^3",
     "mass_resolution": "100 Mpc run: Gas 1.81e6 M⊙, DM 9.70e6 M⊙; higher resolution 25 Mpc run: Gas ~2.3e5 M⊙, DM ~1.2e6 M⊙",
-    "end_redshift": "z=0",
     "description": "A suite of hydrodynamical simulations calibrated to match the local galaxy population, spanning volumes 25–100 Mpc on a side."
   },
   "millennium": {
@@ -339,7 +336,6 @@
     "subgrid_model": "N/A",
     "volume": "(500 h^-1 Mpc)^3",
     "mass_resolution": "DM 8.6e8 h^-1 M⊙",
-    "end_redshift": "z=0",
     "description": "A foundational, large-scale dark matter-only N-body simulation that traced the evolution of over 10 billion particles in a 500h^-1 Mpc box."
   },
   "bolshoi": {
@@ -355,7 +351,6 @@
     "subgrid_model": "N/A",
     "volume": "(250 h^-1 Mpc)^3",
     "mass_resolution": "DM 1.35e8 h^-1 M⊙",
-    "end_redshift": "z=0",
     "description": "A high-resolution dark matter-only simulation (250h^-1 Mpc cube) used for creating detailed halo catalogs and merger trees."
   },
   "simba": {
@@ -371,7 +366,6 @@
     "subgrid_model": "SIMBA galaxy formation model",
     "volume": "(100 h^-1 Mpc)^3",
     "mass_resolution": "Gas 1.82e7 M⊙, DM 9.6e7 M⊙",
-    "end_redshift": "z=0",
     "description": "A hydrodynamical simulation (100h^-1 Mpc box) focusing on the co-evolution of galaxies and supermassive black holes, with novel jet feedback implementation."
   },
   "flares": {
@@ -404,7 +398,6 @@
     "subgrid_model": "FLAMINGO galaxy formation model",
     "volume": "Up to (2.8 Gpc)^3 (multiple runs at different resolutions)",
     "mass_resolution": "High-res: baryon ~1×10^8 M⊙ (DM ~5×10^8 M⊙); Mid-res: baryon ~1×10^9 M⊙ (DM ~5×10^9 M⊙)",
-    "end_redshift": "z=0",
     "description": "A suite of large-volume (up to 2.8 Gpc)^3 hydrodynamical simulations designed for next-generation large-scale structure surveys, including the effects of baryons and neutrinos."
   },
   "colibre": {
@@ -418,7 +411,6 @@
     "subgrid_model": "COLIBRE galaxy formation model (EAGLE-derived)",
     "volume": "Test volumes from (25 cMpc)^3 up to (400 cMpc)^3",
     "mass_resolution": "Highest res: baryon ~1×10^5 M⊙ (DM ~5×10^5 M⊙); Lowest res: baryon ~1×10^7 M⊙ (DM ~5×10^7 M⊙)",
-    "end_redshift": "z=0",
     "description": "A suite of simulations spanning a range of volumes and resolutions, aiming to reproduce galaxy properties from high redshift to z=0 by calibrating feedback across scales."
   },
   "camels": {
@@ -434,7 +426,6 @@
     "subgrid_model": "IllustrisTNG and SIMBA galaxy formation models with varied subgrid parameters; N-body only for DMO runs",
     "volume": "(25 h^-1 Mpc)^3 per simulation (some extended to (50 h^-1 Mpc)^3 in later generations)",
     "mass_resolution": "DM ~1×10^9 M⊙, gas ~2×10^8 M⊙ (for 25 h^-1 Mpc boxes, at fiducial resolution)",
-    "end_redshift": "z=0",
     "description": "A large suite (~4,000+) of small cosmological simulations (25 h^-1 Mpc boxes) varying cosmological parameters and subgrid physics, designed to train machine learning models and marginalize over baryonic effects."
   },
   "quijote": {
@@ -448,7 +439,6 @@
     "subgrid_model": "N/A",
     "volume": "(1 h^-1 Gpc)^3 per simulation",
     "mass_resolution": "Simulations span 256^3 to 1024^3 DM particles in 1 h^-1 Gpc (e.g. 512^3 gives DM ≈7×10^11 h^-1 M⊙ per particle; 1024^3 gives ≈9×10^10 h^-1 M⊙)",
-    "end_redshift": "z=0",
     "description": "A massive suite of 44,100 N-body simulations (1 h^-1 Gpc boxes) exploring over 7,000 cosmologies, designed to quantify information content in large-scale structure and provide training data for emulators."
   },
   "bluetides": {
@@ -477,7 +467,6 @@
     "volume": "≈(3 Gpc)^3 (spanning ~10 billion light-years across)",
     "mass_resolution": "DM ~1×10^9 M⊙; gas ~2×10^8 M⊙ (approximate for current runs)",
     "num_zoom_regions": 1,
-    "end_redshift": "z=0",
     "description": "A flagship cosmological hydrodynamical simulation run on the exascale Frontier supercomputer, covering ~10 billion light-years and including dark matter, gas, star formation and black hole physics for comparison with upcoming surveys."
   },
   "sphinx": {
@@ -523,7 +512,6 @@
     "volume": "High-resolution region ~5 Mpc radius around the Local Group (embedded in a ~100 h^-1 Mpc constrained volume)",
     "mass_resolution": "DM 1.5×10^5 M⊙; gas 2.2×10^4 M⊙; Plummer-equivalent softening ~220 pc",
     "num_zoom_regions": 30,
-    "end_redshift": "z=0",
     "description": "A suite of constrained Local Group simulations producing realistic Milky Way and Andromeda analogues (and their satellites) embedded in a cosmographically accurate environment."
   },
   "thesan": {
@@ -569,7 +557,6 @@
     "volume": "Calibration box ~ (40 cMpc)^3 plus zoom-in simulations of galaxy groups and clusters (M_200 ~10^13–10^15 M⊙)",
     "mass_resolution": "Calibration run: gas ~1×10^6 M⊙, DM ~few ×10^6 M⊙; higher resolution in zoom-in halos (DM ~10^5–10^6 M⊙ in cluster cores)",
     "num_zoom_regions": 27,
-    "end_redshift": "z=0",
     "description": "A simulation suite combining a (40 cMpc)^3 calibration box with zoom-in simulations of galaxy groups and clusters to model baryon content and feedback in massive halos using an improved Illustris-based model."
   },
   "lyra": {
@@ -584,9 +571,8 @@
     "volume": "Zoom-in on a ~2×10^9 M⊙ halo (selected from a larger volume or isolated setup)",
     "mass_resolution": "DM ≈2×10^1 M⊙; gas 4 M⊙ per cell (resolves individual supernova events)",
     "num_zoom_regions": 1,
-    "end_redshift": "z=0",
     "description": "An extreme-resolution dwarf galaxy zoom simulation resolving the ISM down to ~4 M⊙ gas elements and 10 K, forming individual stars and tracking their feedback to z=0."
-  }
+  },
   "cosmic_dawn": {
     "name": "CoDa (Cosmic Dawn)",
     "aliases": [
@@ -631,7 +617,6 @@
     "subgrid_model": "NewHorizon physics model (based on Horizon-AGN)",
     "volume": "(16 Mpc)^3 zoom region",
     "mass_resolution": "DM ~1e6 M⊙; gas cell size down to ~34 pc",
-    "end_redshift": "z=0",
     "num_zoom_regions": 1,
     "description": "A high-resolution zoom-in simulation embedded in a larger cosmological box, focusing on detailed ISM structure and galaxy formation."
   },
@@ -659,7 +644,6 @@
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Chemical Enrichment, Galaxy Mergers",
     "volume": "(500 h^-1 Mpc)^3",
     "mass_resolution": "DM ~8.6e8 h^-1 M⊙ (Millennium)",
-    "end_redshift": "z=0",
     "merger_tree_code": "LHALOTREE",
     "parent_simulation": "Millennium Simulation",
     "description": "A semi-analytic model built on Millennium Simulation trees, modeling galaxy growth via baryonic processes and halo mergers."
@@ -674,7 +658,6 @@
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Environmental Effects, Chemical Evolution",
     "volume": "(250 h^-1 Mpc)^3",
     "mass_resolution": "DM ~1.35e8 h^-1 M⊙ (Bolshoi)",
-    "end_redshift": "z=0",
     "merger_tree_code": "Consistent Trees",
     "parent_simulation": "Bolshoi Simulation",
     "description": "A flexible SAM framework incorporating feedback, cooling, and environmental processes, applied to halo trees from Bolshoi and other N-body simulations."
@@ -687,7 +670,6 @@
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Reionization, Chemical Evolution",
     "volume": "(210 h^-1 Mpc)^3",
     "mass_resolution": "DM ~1e8 M⊙ (SURFS)",
-    "end_redshift": "z=0",
     "merger_tree_code": "TreeFrog",
     "parent_simulation": "SURFS Simulation",
     "description": "A modern, open-source semi-analytic model applied to halo trees from SURFS, featuring modular implementations of key baryonic processes."
@@ -702,7 +684,6 @@
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Photoionization Suppression, Chemical Evolution",
     "volume": "(800 Mpc)^3",
     "mass_resolution": "DM ~1e9 M⊙ (Planck-Millennium)",
-    "end_redshift": "z=0",
     "merger_tree_code": "Dhalo / Millennium Trees",
     "parent_simulation": "Planck-Millennium Simulation",
     "description": "A longstanding SAM incorporating various baryonic processes and applied to large-volume N-body simulations such as Millennium and Planck-Millennium."
