@@ -40,7 +40,7 @@
     "volume": "(106.5 Mpc)^3",
     "mass_resolution": "Gas 1.26e6 M⊙, DM 6.26e6 M⊙",
     "cost": "~19M CPU hours",
-    "description": "Predecessor to IllustrisTNG, a landmark hydrodynamical simulation of galaxy formation in a ~100 Mpc box."
+    "description": "Predecessor to IllustrisTNG, a hydrodynamical simulation of galaxy formation in a ~100 Mpc box."
   },
   "eagle": {
     "name": "EAGLE",
@@ -55,7 +55,7 @@
     "volume": "Boxes from (25 Mpc)^3 up to (100 Mpc)^3",
     "mass_resolution": "100 Mpc run: Gas 1.81e6 M⊙, DM 9.70e6 M⊙; higher resolution 25 Mpc run: Gas ~2.3e5 M⊙, DM ~1.2e6 M⊙",
     "cost": "~4.5M CPU hours for flagship run",
-    "description": "A suite of hydrodynamical simulations calibrated to match the local galaxy population, spanning volumes 25–100 Mpc on a side."
+    "description": "A suite of hydrodynamical simulations calibrated to match z=0 galaxy populations, spanning volumes 25–100 Mpc on a side."
   },
   "millennium": {
     "name": "Millennium Simulation",
