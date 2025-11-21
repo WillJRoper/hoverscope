@@ -3,7 +3,6 @@
   "illustris_tng": {
     "name": "IllustrisTNG",
     "aliases": ["Illustris TNG", "TNG100", "TNG300", "TNG50"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, magneto-hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment",
     "code": "AREPO",
@@ -17,7 +16,6 @@
   "illustris_original": {
     "name": "Illustris",
     "aliases": ["Original Illustris", "Illustris-1"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment",
     "code": "AREPO",
@@ -31,7 +29,6 @@
   "eagle": {
     "name": "EAGLE",
     "aliases": ["Evolution and Assembly of GaLaxies and their Environments"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, thermal AGN feedback, chemical enrichment",
     "code": "GADGET-3 (Modified)",
@@ -45,7 +42,6 @@
   "millennium": {
     "name": "Millennium Simulation",
     "aliases": ["Millennium Run", "Millennium-I"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity (dark matter only)",
     "code": "GADGET-2",
@@ -58,7 +54,6 @@
   "bolshoi": {
     "name": "Bolshoi Simulation",
     "aliases": ["Bolshoi-Planck"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity (dark matter only)",
     "code": "ART",
@@ -71,7 +66,6 @@
   "simba": {
     "name": "SIMBA",
     "aliases": ["SImulation of MUltiphase Baryonic Accretion"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN jet feedback, black hole growth, dust, chemical enrichment",
     "code": "GIZMO",
@@ -84,7 +78,6 @@
   "flares": {
     "name": "FLARES",
     "aliases": ["First Light And Reionisation Epoch Simulations"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment",
     "code": "GADGET-3 (Modified)",
@@ -100,7 +93,6 @@
   "flamingo": {
     "name": "FLAMINGO",
     "aliases": ["Full-hydro Large-scale structure simulations with All-sky Mapping for the Interpretation of Next Generation Observations"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, massive neutrinos",
     "code": "SWIFT",
@@ -114,7 +106,6 @@
   "colibre": {
     "name": "COLIBRE",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment",
     "code": "SWIFT",
@@ -127,7 +118,6 @@
   "camels": {
     "name": "CAMELS",
     "aliases": ["Cosmology and Astrophysics with MachinE Learning Simulations"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback; gravity-only variants",
     "code": "AREPO; GIZMO; GADGET-3",
@@ -140,7 +130,6 @@
   "quijote": {
     "name": "Quijote Simulations",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity (dark matter only, some runs with massive neutrinos)",
     "code": "GADGET-3",
@@ -153,7 +142,6 @@
   "bluetides": {
     "name": "BlueTides",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment, UV background reionization",
     "code": "MP-Gadget",
@@ -167,7 +155,6 @@
   "frontier": {
     "name": "Frontier Simulation",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity, magneto-hydrodynamics, star formation, stellar feedback, AGN jet feedback",
     "code": "AthenaPK",
@@ -181,7 +168,6 @@
   "sphinx": {
     "name": "SPHINX",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, radiative transfer, non-equilibrium cooling",
     "code": "RAMSES-RT",
@@ -195,7 +181,6 @@
   "megatron": {
     "name": "MEGATRON",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, radiative transfer, non-equilibrium chemistry, star formation, stellar feedback, Population III and II enrichment",
     "code": "RAMSES-RTZ",
@@ -210,7 +195,6 @@
   "hestia": {
     "name": "HESTIA",
     "aliases": ["High-resolution Environmental Simulations of The Immediate Area"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, magneto-hydrodynamics, star formation, stellar feedback, AGN feedback",
     "code": "AREPO",
@@ -224,7 +208,6 @@
   "thesan": {
     "name": "THESAN",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, magneto-hydrodynamics, star formation, stellar feedback, AGN feedback, radiative transfer, dust, chemical enrichment",
     "code": "AREPO-RT",
@@ -239,7 +222,6 @@
   "thesan_zoom": {
     "name": "THESAN-ZOOM",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, radiative transfer, star formation, stellar feedback, dust, chemical enrichment",
     "code": "AREPO-RT",
@@ -254,7 +236,6 @@
   "fable": {
     "name": "FABLE",
     "aliases": ["Feedback Acting on Baryons in Large-scale Environments"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, AGN feedback, chemical enrichment",
     "code": "AREPO",
@@ -268,7 +249,6 @@
   "lyra": {
     "name": "LYRA",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "gravity, hydrodynamics, star formation, stellar feedback, supernova feedback, chemical enrichment",
     "code": "AREPO",
@@ -282,7 +262,6 @@
   "cosmic_dawn": {
     "name": "CoDa (Cosmic Dawn)",
     "aliases": ["Cosmic Dawn", "CoDa", "CoDa I", "CoDa II"],
-    "order_key": "simulation",
     "type": "Cosmological Simulation Suite",
     "included_physics": "Gravity, Hydrodynamics, Star Formation, Stellar Feedback, Radiative Transfer",
     "code": "RAMSES-CUDATON",
@@ -296,7 +275,6 @@
   "horizon_agn": {
     "name": "Horizon-AGN",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "Gravity, Hydrodynamics, Star Formation, Stellar Feedback, AGN Feedback, Metal Enrichment",
     "code": "RAMSES",
@@ -310,7 +288,6 @@
   "newhorizon": {
     "name": "NewHorizon",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Zoom Simulation",
     "included_physics": "Gravity, Hydrodynamics, Star Formation, Stellar Feedback, AGN Feedback, Metal Enrichment",
     "code": "RAMSES",
@@ -324,7 +301,6 @@
   "astrid": {
     "name": "ASTRID",
     "aliases": [],
-    "order_key": "simulation",
     "type": "Cosmological Simulation",
     "included_physics": "Gravity, Hydrodynamics, Star Formation, Stellar Feedback, AGN Feedback, Reionization, Massive Neutrinos",
     "code": "MP-Gadget",

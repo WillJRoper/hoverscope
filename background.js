@@ -93,19 +93,22 @@ function combineDataSources(telescopes, surveys, simulations, sams) {
   // Combine all entries, excluding display_order fields
   const combined = { _display_orders: displayOrders };
 
-  // Helper to add entries from a source, excluding display_order
-  const addEntries = (source) => {
+  // Helper to add entries from a source, excluding display_order, and adding order_key
+  const addEntries = (source, orderKey) => {
     Object.keys(source).forEach((key) => {
       if (key !== "display_order") {
-        combined[key] = source[key];
+        combined[key] = {
+          ...source[key],
+          order_key: orderKey,
+        };
       }
     });
   };
 
-  addEntries(telescopes);
-  addEntries(surveys);
-  addEntries(simulations);
-  addEntries(sams);
+  addEntries(telescopes, "telescope");
+  addEntries(surveys, "telescope");
+  addEntries(simulations, "simulation");
+  addEntries(sams, "SAM");
 
   return combined;
 }

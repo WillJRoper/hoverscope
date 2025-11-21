@@ -3,7 +3,6 @@
   "lgalaxies": {
     "name": "L-Galaxies",
     "aliases": ["Munich SAM"],
-    "order_key": "SAM",
     "type": "Semi-Analytic Model",
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Chemical Enrichment, Galaxy Mergers",
     "volume": "(500 h^-1 Mpc)^3",
@@ -15,7 +14,6 @@
   "sc_sam": {
     "name": "Santa Cruz SAM",
     "aliases": ["SC-SAM"],
-    "order_key": "SAM",
     "type": "Semi-Analytic Model",
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Environmental Effects, Chemical Evolution",
     "volume": "(250 h^-1 Mpc)^3",
@@ -27,7 +25,6 @@
   "shark": {
     "name": "SHARK",
     "aliases": [],
-    "order_key": "SAM",
     "type": "Semi-Analytic Model",
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Reionization, Chemical Evolution",
     "volume": "(210 h^-1 Mpc)^3",
@@ -39,7 +36,6 @@
   "galform": {
     "name": "GALFORM",
     "aliases": ["Durham SAM"],
-    "order_key": "SAM",
     "type": "Semi-Analytic Model",
     "included_physics": "Gas Cooling, Star Formation, Stellar Feedback, AGN Feedback, Photoionization Suppression, Chemical Evolution",
     "volume": "(800 Mpc)^3",

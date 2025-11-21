@@ -3,7 +3,6 @@
   "sdss": {
     "name": "SDSS",
     "aliases": ["Sloan Digital Sky Survey"],
-    "order_key": "telescope",
     "type": "Ground-based Survey",
     "launch_date": "2000 (began operations)",
     "wavelengths": "Visible to near-infrared",
@@ -15,7 +14,6 @@
   "lsst": {
     "name": "LSST",
     "aliases": ["Vera C. Rubin Observatory", "Rubin Observatory", "Legacy Survey of Space and Time"],
-    "order_key": "telescope",
     "type": "Ground-based Survey Telescope",
     "launch_date": "2025 (planned first light)",
     "wavelengths": "Visible to near-infrared (320 - 1050 nm)",
