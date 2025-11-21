@@ -1,0 +1,27 @@
+{
+  "display_order": ["type", "launch_date", "wavelengths", "survey_area", "location", "status"],
+  "sdss": {
+    "name": "SDSS",
+    "aliases": ["Sloan Digital Sky Survey"],
+    "order_key": "telescope",
+    "type": "Ground-based Survey",
+    "launch_date": "2000 (began operations)",
+    "wavelengths": "Visible to near-infrared",
+    "survey_area": ">1/3 of sky",
+    "location": "Apache Point Observatory, New Mexico",
+    "status": "Operational",
+    "description": "Major spectroscopic survey creating detailed 3D maps of the universe"
+  },
+  "lsst": {
+    "name": "LSST",
+    "aliases": ["Vera C. Rubin Observatory", "Rubin Observatory", "Legacy Survey of Space and Time"],
+    "order_key": "telescope",
+    "type": "Ground-based Survey Telescope",
+    "launch_date": "2025 (planned first light)",
+    "wavelengths": "Visible to near-infrared (320 - 1050 nm)",
+    "survey_area": "18,000 sq deg",
+    "location": "Cerro Pachón, Chile",
+    "status": "Under commissioning",
+    "description": "Wide-field survey telescope that will image the entire visible sky every few nights"
+  }
+}

@@ -1,4 +1,5 @@
 {
+  "display_order": ["type", "launch_date", "wavelengths", "survey_area", "location", "status"],
   "jwst": {
     "name": "JWST",
     "aliases": ["James Webb Space Telescope", "Webb"],

@@ -1,8 +1,8 @@
 // Background service worker for Hoverscope
-// Loads telescope database and caches it
+// Loads telescope, survey, simulation, and SAM databases and combines them
 
-const DATABASE_URL =
-  "https://raw.githubusercontent.com/nataliehogg/hoverscope/main/database.json";
+const GITHUB_BASE_URL =
+  "https://raw.githubusercontent.com/nataliehogg/hoverscope/main/";
 
 // Load bundled data on installation - this is the PRIMARY data source
 chrome.runtime.onInstalled.addListener(async () => {
@@ -19,24 +19,95 @@ chrome.runtime.onInstalled.addListener(async () => {
   }
 });
 
-// Load the bundled database.json file
+// Load and combine all bundled database files
 async function loadBundledData() {
   try {
-    const response = await fetch(chrome.runtime.getURL("database.json"));
-    const data = await response.json();
+    // Load all database files in parallel
+    const [telescopes, surveys, simulations, sams] = await Promise.all([
+      fetch(chrome.runtime.getURL("telescopes.json")).then((r) => r.json()),
+      fetch(chrome.runtime.getURL("surveys.json")).then((r) => r.json()),
+      fetch(chrome.runtime.getURL("simulations.json")).then((r) => r.json()),
+      fetch(chrome.runtime.getURL("sams.json")).then((r) => r.json()),
+    ]);
+
+    // Combine databases
+    const combinedData = combineDataSources(
+      telescopes,
+      surveys,
+      simulations,
+      sams,
+    );
+
     await chrome.storage.local.set({
-      telescopeData: data,
+      telescopeData: combinedData,
       lastUpdate: Date.now(),
       dataSource: "bundled",
     });
+
     console.log(
       "Hoverscope: Loaded",
-      Object.keys(data).length,
-      "telescopes from bundled database",
+      Object.keys(combinedData).length - 1,
+      "entries from bundled databases (telescopes, surveys, simulations, SAMs)",
     );
   } catch (error) {
     console.error("Hoverscope: Error loading bundled data:", error);
   }
+}
+
+// Combine multiple data sources into a single database
+function combineDataSources(telescopes, surveys, simulations, sams) {
+  // Create the combined _display_orders object
+  const displayOrders = {
+    telescope:
+      telescopes.display_order ||
+      surveys.display_order || [
+        "type",
+        "launch_date",
+        "wavelengths",
+        "survey_area",
+        "location",
+        "status",
+      ],
+    simulation:
+      simulations.display_order || [
+        "type",
+        "volume",
+        "mass_resolution",
+        "code",
+        "included_physics",
+        "hydrodynamics",
+        "subgrid_model",
+      ],
+    SAM:
+      sams.display_order || [
+        "type",
+        "included_physics",
+        "volume",
+        "mass_resolution",
+        "end_redshift",
+        "merger_tree_code",
+        "parent_simulation",
+      ],
+  };
+
+  // Combine all entries, excluding display_order fields
+  const combined = { _display_orders: displayOrders };
+
+  // Helper to add entries from a source, excluding display_order
+  const addEntries = (source) => {
+    Object.keys(source).forEach((key) => {
+      if (key !== "display_order") {
+        combined[key] = source[key];
+      }
+    });
+  };
+
+  addEntries(telescopes);
+  addEntries(surveys);
+  addEntries(simulations);
+  addEntries(sams);
+
+  return combined;
 }
 
 // Load the bundled names.json file
@@ -59,32 +130,47 @@ async function loadNamesData() {
 
 // Try to update from GitHub (optional - only if you've set up a GitHub repo)
 async function tryUpdateFromGitHub() {
-  // Skip if using default placeholder URL
-  if (DATABASE_URL.includes("YOUR_USERNAME")) {
-    console.log(
-      "Hoverscope: GitHub updates not configured (using bundled data only)",
-    );
-    return;
-  }
-
   try {
-    const response = await fetch(DATABASE_URL);
-    if (!response.ok) {
-      console.log(
-        "Hoverscope: Could not fetch from GitHub, using bundled data",
-      );
-      return;
-    }
+    // Load all database files from GitHub in parallel
+    const [telescopes, surveys, simulations, sams] = await Promise.all([
+      fetch(GITHUB_BASE_URL + "telescopes.json").then((r) => {
+        if (!r.ok) throw new Error("telescopes.json fetch failed");
+        return r.json();
+      }),
+      fetch(GITHUB_BASE_URL + "surveys.json").then((r) => {
+        if (!r.ok) throw new Error("surveys.json fetch failed");
+        return r.json();
+      }),
+      fetch(GITHUB_BASE_URL + "simulations.json").then((r) => {
+        if (!r.ok) throw new Error("simulations.json fetch failed");
+        return r.json();
+      }),
+      fetch(GITHUB_BASE_URL + "sams.json").then((r) => {
+        if (!r.ok) throw new Error("sams.json fetch failed");
+        return r.json();
+      }),
+    ]);
 
-    const data = await response.json();
+    // Combine databases
+    const combinedData = combineDataSources(
+      telescopes,
+      surveys,
+      simulations,
+      sams,
+    );
+
     await chrome.storage.local.set({
-      telescopeData: data,
+      telescopeData: combinedData,
       lastUpdate: Date.now(),
       dataSource: "github",
     });
+
     console.log("Hoverscope: Updated database from GitHub");
   } catch (error) {
-    console.log("Hoverscope: Using bundled data (GitHub fetch failed)");
+    console.log(
+      "Hoverscope: Could not fetch from GitHub, using bundled data",
+      error.message,
+    );
   }
 }
 
