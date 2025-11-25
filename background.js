@@ -5,9 +5,8 @@ const DATABASE_URL = 'https://raw.githubusercontent.com/nataliehogg/hoverscope/m
 
 // Load bundled data on installation - this is the PRIMARY data source
 chrome.runtime.onInstalled.addListener(async () => {
-  console.log('Hoverscope installed, loading databases...');
+  console.log('Hoverscope installed, loading database...');
   await loadBundledData();
-  await loadNamesData();
   // Try to fetch updates from GitHub
   await tryUpdateFromGitHub();
 });
@@ -25,20 +24,6 @@ async function loadBundledData() {
     console.log('Hoverscope: Loaded', Object.keys(data).length, 'telescopes from bundled database');
   } catch (error) {
     console.error('Hoverscope: Error loading bundled data:', error);
-  }
-}
-
-// Load the bundled names.json file
-async function loadNamesData() {
-  try {
-    const response = await fetch(chrome.runtime.getURL('names.json'));
-    const data = await response.json();
-    await chrome.storage.local.set({
-      namesData: data
-    });
-    console.log('Hoverscope: Loaded', Object.keys(data).length, 'names from bundled database');
-  } catch (error) {
-    console.error('Hoverscope: Error loading names data:', error);
   }
 }
 
@@ -74,13 +59,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getTelescopeData') {
     chrome.storage.local.get('telescopeData', (result) => {
       sendResponse(result.telescopeData || {});
-    });
-    return true; // Keep channel open for async response
-  }
-
-  if (request.action === 'getNamesData') {
-    chrome.storage.local.get('namesData', (result) => {
-      sendResponse(result.namesData || {});
     });
     return true; // Keep channel open for async response
   }
