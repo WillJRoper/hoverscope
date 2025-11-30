@@ -109,7 +109,7 @@ function processPage() {
     elementIndex++;
   });
 
-  console.log(`Hoverscope: Found and marked ${totalTelescopeMatches} telescope/survey/simulation/SAM mentions`);
+  console.log(`Hoverscope: Found and marked ${totalMatches} telescope/survey/simulation/SAM mentions`);
 }
 
 function processElement(element, elementIndex) {

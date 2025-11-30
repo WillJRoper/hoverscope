@@ -8,7 +8,6 @@ const GITHUB_BASE_URL =
 chrome.runtime.onInstalled.addListener(async () => {
   console.log("Hoverscope installed, loading databases...");
   await loadBundledData();
-  await loadNamesData();
 
   // Only fetch updates from GitHub in production (not in developer mode)
   const isDevMode = !chrome.runtime.getManifest().update_url;
@@ -113,24 +112,6 @@ function combineDataSources(telescopes, surveys, simulations, sams) {
   return combined;
 }
 
-// Load the bundled names.json file
-async function loadNamesData() {
-  try {
-    const response = await fetch(chrome.runtime.getURL("names.json"));
-    const data = await response.json();
-    await chrome.storage.local.set({
-      namesData: data,
-    });
-    console.log(
-      "Hoverscope: Loaded",
-      Object.keys(data).length,
-      "names from bundled database",
-    );
-  } catch (error) {
-    console.error("Hoverscope: Error loading names data:", error);
-  }
-}
-
 // Try to update from GitHub (optional - only if you've set up a GitHub repo)
 async function tryUpdateFromGitHub() {
   try {
@@ -182,13 +163,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "getTelescopeData") {
     chrome.storage.local.get("telescopeData", (result) => {
       sendResponse(result.telescopeData || {});
-    });
-    return true; // Keep channel open for async response
-  }
-
-  if (request.action === "getNamesData") {
-    chrome.storage.local.get("namesData", (result) => {
-      sendResponse(result.namesData || {});
     });
     return true; // Keep channel open for async response
   }
