@@ -1,9 +1,7 @@
 // Hoverscope content script
 // Detects telescope/satellite names and displays hover tooltips
-// Detects Handley Lab member names and displays confetti
 
 let telescopeData = {};
-let namesData = {};
 let tooltip = null;
 
 // Initialize
@@ -26,34 +24,17 @@ async function init() {
     return;
   }
 
-  // Get names data from background script
-  try {
-    namesData = await new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage({ action: 'getNamesData' }, (data) => {
-        if (chrome.runtime.lastError) {
-          reject(chrome.runtime.lastError);
-          return;
-        }
-        resolve(data || {});
-      });
-    });
-  } catch (error) {
-    console.error('Hoverscope: Error fetching names data from background:', error);
-    // Continue even if names data fails
-  }
-
   if (Object.keys(telescopeData).length === 0) {
     console.warn('Hoverscope: No telescope data available. Try reloading the extension.');
     return;
   }
 
   console.log(`Hoverscope: Loaded ${Object.keys(telescopeData).length} telescopes/satellites`);
-  console.log(`Hoverscope: Loaded ${Object.keys(namesData).length} names`);
 
   // Create tooltip element
   createTooltip();
 
-  // Find and wrap telescope names and people names
+  // Find and wrap telescope names
   processPage();
 
   console.log('Hoverscope: Initialization complete');
@@ -120,27 +101,21 @@ function processPage() {
   
   // Process each target element
   let totalMatches = 0;
-  let totalTelescopeMatches = 0;
-  let totalNameMatches = 0;
   let elementIndex = 0;
   targets.forEach(element => {
     if (element.getAttribute('data-hoverscope-processed')) return;
-    const result = processElement(element, elementIndex);
-    totalMatches += result.total;
-    totalTelescopeMatches += result.telescopes;
-    totalNameMatches += result.names;
+    totalMatches += processElement(element, elementIndex);
     element.setAttribute('data-hoverscope-processed', 'true');
     elementIndex++;
   });
 
-  console.log(`Hoverscope: Found and marked ${totalTelescopeMatches} telescope/survey/simulation/SAM mentions and ${totalNameMatches} name mentions`);
+  console.log(`Hoverscope: Found and marked ${totalTelescopeMatches} telescope/survey/simulation/SAM mentions`);
 }
 
 function processElement(element, elementIndex) {
   // Get all text nodes
   const textNodes = getTextNodes(element);
   let telescopeCount = 0;
-  let nameCount = 0;
 
   textNodes.forEach(node => {
     const text = node.textContent;
@@ -197,59 +172,6 @@ function processElement(element, elementIndex) {
       });
     });
 
-    // Find all matches - names
-    const nameMatchCountBefore = matches.filter(m => m.type === 'name').length;
-
-    Object.keys(namesData).forEach(key => {
-      const person = namesData[key];
-      const names = [person.name, ...(person.aliases || [])];
-
-      names.filter(name => name).forEach(name => {
-
-        // Try regular format: "FirstName LastName" or "Initials LastName"
-        const regex = new RegExp(`\\b${escapeRegex(name).replace(/\s+/g, '\\s+')}\\b`, 'gi');
-        let match;
-
-        // Reset regex
-        regex.lastIndex = 0;
-
-        while ((match = regex.exec(text)) !== null) {
-          matches.push({
-            start: match.index,
-            end: match.index + match[0].length,
-            text: match[0],
-            key: key,
-            type: 'name'
-          });
-        }
-
-        // Also try reversed format: "LastName, Initials" (common on arXiv)
-        const nameParts = name.trim().split(/\s+/); // Use regex split to handle multiple spaces
-        if (nameParts.length >= 2) {
-          // For "Will Handley" -> try "Handley, W."
-          // For "W. Handley" -> try "Handley, W."
-          // For "N. B. Hogg" -> try "Hogg, N. B."
-          const lastName = nameParts[nameParts.length - 1];
-          const firstParts = nameParts.slice(0, -1).join(' ');
-
-          // Create reversed pattern with flexible whitespace
-          const reversedName = `${escapeRegex(lastName)},\\s*${escapeRegex(firstParts).replace(/\s+/g, '\\s+')}`;
-          const reversedRegex = new RegExp(`\\b${reversedName}\\b`, 'gi');
-          reversedRegex.lastIndex = 0;
-
-          while ((match = reversedRegex.exec(text)) !== null) {
-            matches.push({
-              start: match.index,
-              end: match.index + match[0].length,
-              text: match[0],
-              key: key,
-              type: 'name'
-            });
-          }
-        }
-      });
-    });
-    
     if (matches.length === 0) {
       return;
     }
@@ -263,11 +185,7 @@ function processElement(element, elementIndex) {
       if (match.start >= lastEnd) {
         uniqueMatches.push(match);
         lastEnd = match.end;
-        if (match.type === 'telescope') {
-          telescopeCount++;
-        } else if (match.type === 'name') {
-          nameCount++;
-        }
+        telescopeCount++;
       }
     });
     
@@ -283,24 +201,14 @@ function processElement(element, elementIndex) {
 
       // Add matched text as span
       const span = document.createElement('span');
-      if (match.type === 'telescope') {
-        span.className = 'hoverscope-term';
-        span.setAttribute('data-telescope-key', match.key);
-        span.textContent = match.text;
+      span.className = 'hoverscope-term';
+      span.setAttribute('data-telescope-key', match.key);
+      span.textContent = match.text;
 
-        // Add event listeners for telescopes (tooltip)
-        span.addEventListener('mouseenter', handleMouseEnter);
-        span.addEventListener('mouseleave', handleMouseLeave);
-        span.addEventListener('mousemove', handleMouseMove);
-      } else if (match.type === 'name') {
-        span.className = 'hoverscope-person';
-        span.setAttribute('data-name-key', match.key);
-        span.textContent = match.text;
-
-        // Add event listeners for names (confetti)
-        span.addEventListener('mouseenter', handleNameMouseEnter);
-        span.addEventListener('mouseleave', handleNameMouseLeave);
-      }
+      // Add event listeners for telescopes (tooltip)
+      span.addEventListener('mouseenter', handleMouseEnter);
+      span.addEventListener('mouseleave', handleMouseLeave);
+      span.addEventListener('mousemove', handleMouseMove);
 
       fragment.appendChild(span);
       lastIndex = match.end;
@@ -315,11 +223,7 @@ function processElement(element, elementIndex) {
     node.parentNode.replaceChild(fragment, node);
   });
 
-  return {
-    total: telescopeCount + nameCount,
-    telescopes: telescopeCount,
-    names: nameCount
-  };
+  return telescopeCount;
 }
 
 function getTextNodes(element) {
@@ -330,7 +234,7 @@ function getTextNodes(element) {
     {
       acceptNode: function(node) {
         // Skip if already processed or inside script/style
-        if (node.parentElement.closest('.hoverscope-term, .hoverscope-person, script, style, #hoverscope-tooltip')) {
+        if (node.parentElement.closest('.hoverscope-term, script, style, #hoverscope-tooltip')) {
           return NodeFilter.FILTER_REJECT;
         }
         // Only include nodes with actual text
@@ -452,62 +356,6 @@ function positionTooltip(event) {
 
   tooltip.style.left = x + 'px';
   tooltip.style.top = y + 'px';
-}
-
-// Name hover handlers - trigger confetti
-function handleNameMouseEnter(event) {
-  const rect = event.target.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-
-  createConfetti(centerX, centerY);
-}
-
-function handleNameMouseLeave(event) {
-  // Nothing needed on leave
-}
-
-// Confetti animation
-function createConfetti(x, y) {
-  const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7', '#a29bfe', '#fd79a8', '#fdcb6e'];
-  const particleCount = 25;
-
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'hoverscope-confetti';
-
-    // Random color
-    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-    // Random size between 4 and 8px
-    const size = Math.random() * 4 + 4;
-    particle.style.width = size + 'px';
-    particle.style.height = size + 'px';
-
-    // Starting position (at the name)
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-
-    // Random direction and distance (increased velocity for wider spread)
-    const angle = (Math.random() * Math.PI * 2);
-    const velocity = Math.random() * 80 + 60; // Increased from 50+30 to 80+60
-    const tx = Math.cos(angle) * velocity;
-    const ty = Math.sin(angle) * velocity;
-
-    // Random rotation
-    const rotation = Math.random() * 360;
-
-    particle.style.setProperty('--tx', tx + 'px');
-    particle.style.setProperty('--ty', ty + 'px');
-    particle.style.setProperty('--rotation', rotation + 'deg');
-
-    document.body.appendChild(particle);
-
-    // Remove particle after animation (increased from 800ms to 1400ms)
-    setTimeout(() => {
-      particle.remove();
-    }, 1400);
-  }
 }
 
 // Run when page loads
